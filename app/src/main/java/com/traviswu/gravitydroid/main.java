@@ -1,6 +1,7 @@
 package com.traviswu.gravitydroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -25,6 +27,14 @@ public class main extends Activity {
         buttonPlanet.setOnClickListener(
                 new Button.OnClickListener(){
                     public void onClick(View v){
+
+                        //Read QR Code
+                        scanQR(v);
+
+
+
+                        //Generate QR Code
+                        /*
                         ImageView imageView = (ImageView) findViewById(R.id.qrCode);
 
                         String qrData = "Data I want to encode in QR code";
@@ -38,12 +48,32 @@ public class main extends Activity {
                             imageView.setImageBitmap(bitmap);
                         } catch (WriterException e) {
                             e.printStackTrace();
-                        }
+                        }*/
                     }
                 }
         );
     }
 
+    public void scanQR(View v){
+        IntentIntegrator scanIntegrator = new IntentIntegrator(this);
+        scanIntegrator.initiateScan();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent){
+        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (scanningResult != null) {
+            String scanContent = scanningResult.getContents();
+            String scanFormat = scanningResult.getFormatName();
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    scanContent, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else{
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No scan data received!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
