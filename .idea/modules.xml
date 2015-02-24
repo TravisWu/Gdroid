@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GravityDroid.iml" filepath="$PROJECT_DIR$/GravityDroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Gdroid.iml" filepath="$PROJECT_DIR$/Gdroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
