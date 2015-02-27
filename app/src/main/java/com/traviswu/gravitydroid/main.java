@@ -47,11 +47,13 @@ public class main extends Activity {
                 }
         );
     ImageButton buttonMessage = (ImageButton)findViewById(R.id.twilio);
-
+        buttonMessage.setOnClickListener(textSender(x));
     }
 
 
-
+    public void textSender(View v){
+        
+    }
     public void scanQR(View v){
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
         scanIntegrator.initiateScan();
