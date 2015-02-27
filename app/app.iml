@@ -80,6 +80,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 16 Platform (1)" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="twilio-java-sdk-3.7.2-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="core-3.2.0" level="project" />
     <orderEntry type="library" exported="" name="1_core-3.2.0" level="project" />
   </component>

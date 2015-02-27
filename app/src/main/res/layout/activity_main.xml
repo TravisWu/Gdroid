@@ -10,6 +10,7 @@
     android:id="@+id/background"
     android:background="@drawable/background_converted">
 
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,12 +19,15 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/planet_converted" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/qrCode"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:id="@+id/twilio"
+        android:layout_gravity="left|top"
+        android:background="@drawable/speech"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/frameLayout" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -61,19 +65,24 @@
         android:layout_alignTop="@+id/buttonTwitter"
         android:layout_alignParentRight="true" />
 
+
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:id="@+id/frameLayout"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentLeft="true">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonGen"
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="52dp"
+            android:id="@+id/qrCode"
             android:layout_gravity="center_horizontal|bottom"
             android:background="@drawable/pathh"
-            android:layout_marginBottom="65dp" />
+            android:layout_marginBottom="65dp"/>
+
+
+
     </FrameLayout>
 </RelativeLayout>

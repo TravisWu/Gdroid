@@ -2,19 +2,13 @@ package com.traviswu.gravitydroid;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.Toast;
-
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.traviswu.gravitydroid.IntentResult;
-import com.traviswu.gravitydroid.IntentIntegrator;
 
 public class main extends Activity {
 
@@ -52,7 +46,11 @@ public class main extends Activity {
                     }
                 }
         );
+    ImageButton buttonMessage = (ImageButton)findViewById(R.id.twilio);
+
     }
+
+
 
     public void scanQR(View v){
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);

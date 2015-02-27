@@ -23,4 +23,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('build/libs/core-3.2.0.jar')
     compile files('build/Lib/core-3.2.0.jar')
+    compile files('/Users/traviswu/Desktop/Gdroid/.idea/twilio-java-sdk-3.7.2-SNAPSHOT.jar')
 }
