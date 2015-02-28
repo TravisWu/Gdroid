@@ -1,16 +1,26 @@
 package com.traviswu.gravitydroid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.twilio.sdk.TwilioRestException;
+
+
 public class main extends Activity {
+    final Context context = this;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +57,49 @@ public class main extends Activity {
                 }
         );
     ImageButton buttonMessage = (ImageButton)findViewById(R.id.twilio);
-        buttonMessage.setOnClickListener(textSender(x));
+        buttonMessage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View arg0) {
+                //get prompt.xml view
+                LayoutInflater li = LayoutInflater.from(context);
+                View promptsView = li.inflate(R.layout.twilioprompt,null);
+
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                // set prompt.xml to alergdialog builder
+                alertDialogBuilder.setView(promptsView);
+                //set dialog message
+               final EditText userInput = (EditText) promptsView.findViewById(R.id.promptnumber);
+
+               alertDialogBuilder
+                       .setPositiveButton("send",
+                             new DialogInterface.OnClickListener(){
+                                 public void onClick(DialogInterface dialog, int id) {
+                                     //get user input and set it to results
+                                     //edit text
+                                     Toast toast = Toast.makeText(getApplicationContext(),
+                                             userInput.getText(), Toast.LENGTH_SHORT);
+                                     toast.show();
+                                     textSender(userInput.getText().toString());
+                                 };
+                             })
+                       .create()
+                       .show();
+
+
+            };
+        });
     }
 
 
-    public void textSender(View v){
-        
+    public void textSender(String phoneNumber){
+        try {
+            SmsSender.send(phoneNumber);
+        } catch (TwilioRestException e) {
+            e.printStackTrace();
+        }
+
+
     }
     public void scanQR(View v){
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
